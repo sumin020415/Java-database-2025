@@ -14,7 +14,7 @@ Java 개발자 과정 Database 리포지토리
     - SQL을 배우는 것!
 - Oracle 설치
     1. Powershell 오픈
-    2. pull 내려받기
+    2. docker pull 내려받기
         ```shell
         > docker pull oracleinanutshell/oracle-xe-11g
         ```
@@ -24,7 +24,7 @@ Java 개발자 과정 Database 리포지토리
         REPOSITORY                        TAG       IMAGE ID       CREATED        SIZE
         oracleinanutshell/oracle-xe-11g   latest    8b740e77d4b9   6 years ago    2.79GB
         ```
-    4. 도커 컨테이너 실행행
+    4. 도커 컨테이너 실행
         ```
         > docker run --name oracle11g -d -p 1521:1521 --restart=always oracleinanutshell/oracle-xe-11g
         ```
@@ -53,13 +53,13 @@ Java 개발자 과정 Database 리포지토리
         - 프로그래밍 언어와 차이 : 어떻게(How)
         - SQL : 무엇(What)
     - SQL의 구성요소 3가지
-    - DDL (Data Definition Lang) - 데이터베이스 생성, 테이블 생성, 객체 생성/수정/삭제
-        - CREATE, ALTER, DROP, RENAME
-    - DCL (Data Control Lang) - 사용자 권한 부여, 해제, 트랜잭션 시작/종료
-        - GRANT, REVOKE, BEGIN TRANS, 
-        - TCL : COMMIT, ROLLBACK
-    - DML (Data Manupulation Lang) - 데이터 조작언어(핵심!), 데이터 삽입/조회/수정/삭제
-        - INSERT, SELECT, UPDATE, DELETE
+        - DDL (Data Definition Lang) - 데이터베이스 생성, 테이블 생성, 객체 생성/수정/삭제
+            - CREATE, ALTER, DROP, RENAME
+        - DCL (Data Control Lang) - 사용자 권한 부여, 해제, 트랜잭션 시작/종료
+            - GRANT, REVOKE, BEGIN TRANS, 
+            - TCL : COMMIT, ROLLBACK
+        - **DML** (Data Manupulation Lang) - 데이터 조작언어(핵심!), 데이터 삽입/조회/수정/삭제
+            - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
 - SELECT 기본
     - 데이터 조회 시 사용하는 기본명령어
     ```sql
@@ -75,11 +75,15 @@ Java 개발자 과정 Database 리포지토리
      [WITH ROLLUP]
     ```
 
-    - 기본 쿼리 : [SQL](./day1/sql01_select기본.sql)
+    - 기본 쿼리 : [SQL](./day01/sql01_select기본.sql)
         1. 기본 SELECT
         2. WHERE 조건절
         3. NULL(!)
         5. ORDER BY 정렬
         6. 집합
+
+- 함수(내장함수)
+    - 문자함수 : [SQL](./day01/sql02_함수.sql)
+    - 숫자함수
 
 ## 2일차
