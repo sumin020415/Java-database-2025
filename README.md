@@ -87,11 +87,17 @@ Java 개발자 과정 Database 리포지토리
     - 숫자함수
 
 ## 2일차
-- 함수(계속)
-    - 문자함수부터 : 
+- 함수(계속) : [SQL](./day02/sql01_함수계속.sql)
+    - 문자함수부터 
     - 숫자함수
     - 날짜함수
     - 형변환함수
+- 복수행함수 : [SQL](./day02/sql02_복수행함수.sql)
+    - 집계함수
+    - GROUP BY
+    - HAVING
+    - ROLLUP
+    - RANK, DENSE_RANK, ROW_NUMBER
 
 - 데이터베이스 타입형
     - **CHAR(n)** - 고정형 문자열, 최대 2000바이트
@@ -109,5 +115,12 @@ Java 개발자 과정 Database 리포지토리
     - BLOB - 대용량 바이너리 데이터타입, 최대 4G
     - BFILE - 외부파일에 저장된 데이터, 4G
 
-- 함수(계속)
-    - 일반함수
+## 3일차
+- JOIN
+    - 카치션곱
+    - 내부조인, 외부조인
+
+- DDL
+    - CREATE, ALTER, DROP, RENAME
+
+- 

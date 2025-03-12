@@ -9,7 +9,7 @@ SELECT concat('Hello', 'Oracle') -- 한행 한열만 출력되는 값 : 스칼�
 SELECT substr(email, 1,2), -- 진짜진짜 많이 씀
       substr(email, -2,2),
       email
-   FROM HR.EMPLOYEES;
+   FROM employees;
 
 -- 전화번호 자를 때, 주민번호 자를 때 SUBSTR() 활용
 
@@ -39,7 +39,7 @@ SELECT '<<<' || '    Hello Oracle    ' || '>>>',
 -- REPLACE(), python에서도 동일하게 존재
 SELECT phone_number,
       replace(phone_number, '123','831') -- 많이 씀!
-   FROM HR.EMPLOYEES;
+   FROM employees;
 
 
 /* 숫자함수, 집계함수와 같이 사용이 많이 됨. */
@@ -82,7 +82,7 @@ SELECT hire_date,
        ADD_MONTHS(hire_date, 3) AS 정규직일자,
        NEXT_DAY(hire_date, '월') AS 돌아오는월요일, -- 'MON' == '월'
        LAST_DAY('2025-02-01') AS 달마지막날
-FROM HR.EMPLOYEES;
+FROM employees;
 
 -- GMT +9
 -- INTERVAL 숫자 뒤 HOUR, DAY, MONTH, YEAR 사용가능
@@ -116,22 +116,22 @@ SELECT '2025-03-12'
 -- NVL(컬럼or데이터) 널값을 다른값으로 치환
 SELECT commission_pct
 	 , NVL(commission_pct, 0.0)
-  FROM HR.EMPLOYEES;
+  FROM employees;
 
 SELECT NVL(hire_date, sysdate)  -- 입사일자가 비어있으면 오늘날짜로 대체
-  FROM HR.EMPLOYEES;
+  FROM employees;
 
 -- NVL2(컬럼|데이터, 널이 아닐때 처리, 널일때 처리할 부분)
 SELECT commission_pct
 	 , salary
 	 , NVL2(commission_pct, salary + (salary * commission_pct), salary) AS 커미션급여
-  FROM HR.EMPLOYEES;
+  FROM employees;
 
 -- DECODE(A, B, '1', '2') A가 B일경우 1 아니면 2
 -- 오라클만 있음
 SELECT email, phone_number, job_id
 	 , DECODE (job_id, 'IT_PROG', '개발자만세!', '나머진 다죽어') AS 캐치프레이즈
-  FROM HR.EMPLOYEES;
+  FROM employees;
 -- WHERE job_id = 'IT_PROG';
 
 /* 
@@ -139,8 +139,34 @@ SELECT email, phone_number, job_id
  * if, elif의 중복된 구문과 유사
  * */
 
+SELECT CASE job_id WHEN 'AD_PRES' THEN '사장'
+				   WHEN 'AD_VP' THEN '부사장'
+				   WHEN 'IT-PROG' THEN '프로그래머'
+				   WHEN 'SA_MAN' THEN '영업사원'
+				   ELSE '미분류'
+	   END AS 직급 
+	 , employee_id
+	 , job_id
+FROM employees;
 
+/*
+ * 정규식 (Regula Expression) - 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
+ * ^, $, ., *, [], [^], {} 패턴인식할때 필요한 키워드.
+ */
+SELECT *
+  FROM employees 
+ WHERE phone_number LIKE '%.%.%';  -- 세자리 전화, 네자리 전화번호가 구분안됨
+ 
+-- 전화번호가 .로 구분되는 세자리 전화번호만 필터링
+-- '[1-9]{6}.[1-9]{7}' -- 주민번호패턴
+SELECT *
+  FROM employees 
+ WHERE REGEXP_LIKE(phone_number, '[0-9]{3}.[0-9]{3}.[0-9]{4}.');
 
+-- first_name이 J로 시작하고, 두번째 글자가 a나 o인 사람을 출력하시오.
+SELECT *
+  FROM employees
+ WHERE REGEXP_LIKE(first_name, '^J(a|o');
 
 
 
