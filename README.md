@@ -160,7 +160,80 @@ Java 개발자 과정 Database 리포지토리
         TRUNCATE TABLE 테이블명;
         ```
 ## 4일차
-- DML
-    - INSERT
-    - UPDATE
-    - DELETE
+- VS XCdode DB플러그인
+    - 확장 > Database 검색 > Database Client(Weijan Chen) > 확장중 Database 선택
+    -   <img src="./image/db0002.png" width="650">
+
+- DML : [INSERT쿼리](./day04/sql01_INSERT.sql), [UPDATE/DELETE쿼리](./day04/sql02_UPDATE_DELETE.sql)
+    - INSERT : 테이블에 새로운 데이터를 삽입하는 명령
+        - 한 건씩 삽입입
+        ```sql
+        INSERT INTO 테이블명 [(컬럼리스트)]
+        VALUES (값리스트);
+        ```
+        - 여러건 한꺼번에 삽입
+
+    - UPDATE : 데이터 변경, WHERE 조건 없이 실행하면 테이블 모든 데이터가 수정됨 (주의요망!)
+        ```sql
+        UPDATE 테이블명 SET
+            컬럼명 - 변경할값,
+            [컬럼명 - 변경할값] -- 반복
+        [WHERE 조건];
+        ```
+    - DELETE : 데이터 삭제, WHERE 조건 없이 실행하면 테이블 모든 데이터가 삭제됨 (주의요망!)
+        ```sql
+        DELETE FROM 테이블명
+        [WHERE 조건];
+        ```
+    - 트랜잭션 : [트랜잭션](./day04/sql03_트랜잭션.sql)
+        - 논리적인 처리단위.
+        ex) 은행에서 돈을 찾을 때 아주 많은 테이블 접근해서 일을 처리
+            - 적어도 7~8개 이상의 테이블에 접근하여 조회하고 업데이트 수행행
+            - 제대로 일이 처리되지 않을경우 다시 원상복귀
+            - DB 설정 AUTO COMMIT 해제 권장
+            - ROLLBACK은 트랙잭션 종료가 아님. COMMIT만 종료.
+            ```sql
+            SET TRANSACTION READ WRITE;  -- 트랜잭션 시작(옵션)
+            COMMIT;  -- 트랜잭선 확정
+            ROLLBACK; --  원상복귀
+            ```
+- 제약조건(Constraint) : [제약조건쿼리](./day04/sql04_제약조건.sql)
+    - 잘못된 데이터가 들어가지 않도록 막는 기법
+        - PRIMARY KEY : 기본키, UIQUE NOT NULL, 중복되지 않고 없어도 안됨
+        - FORIEGN KEY : 외래키, 다른 테이블 PK에 없는 값을 가져다 쓸 수 없음
+        - NOT NULL : 값이 빠지면 안됨
+        - UNIQUE : 들어간 데이터가 중복되면 안됨
+        - CHECK : 기준에 부합하지 않는 데이터는 입력되면 안됨
+        - DEFAULT : NULL 입력 시 기본값이 입력되도록 하는 제약조건
+        ```sql
+        CREATE TABLE 테이블명 (
+            컬럼 생성 시 제약조건 추가
+        );
+
+        ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건
+        ```
+- INDEX : [INDEX쿼리](./day04/sql05_인덱스.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
+    - 책의 찾아보기와 동일한 기능
+    - 검색을 매우 빨리 할 수 있도록 해줌
+    - B(alanced) Tree를 사용해서 검색횟수를 log(n)건으로 줄임
+    - 인덱스 종류
+        - 클러스터드(Clustered) 인덱스 (테이블 당 1개)
+            - PK에 자동으로 생성되는 인덱스 (무지빠름)
+            - PK가 없으면 처음으로 설정되는 UNIQUE 제약조건의 컬럼에 생성
+        - 보조(Non-Clustered) 인덱스 (여러개)
+            - 사용자가 추가하는 인덱스
+            - 클러스터드 인덱스보다 조금 느림
+    - 유의점
+        - PK에 자동 인덱스 후 컬럼에 UNIQUE를 걸어도 인덱스가 생성안됨. 수동으로 생성 필요
+        - WHERE절에서 검색하는 컬럼은 인덱스를 걸어주는 것이 성능향상에 도움
+        - 인덱스는 한 테이블당 4개 이상 걸면 성능 저하
+        - NULL값, 중복값이 많은 컬럼에 인덱스는 성능 저하
+        - INSERT, UPDATE, DELETE가 많이 발생하는 테이블에 인덱스를 걸면 성능 저하
+
+        ```sql
+        CREATE INDEX 인덱스명 ON 테이블명(인덱스걸컬럼명)
+        ```
+## 5일차
+- VIEW
+- 서브쿼리
+- 시퀀스
