@@ -6,12 +6,14 @@ Java 개발자 과정 Database 리포지토리
     - https://desktop.github.com/download/ 다운로드
     - 기존 Github계정으로 Signin with Browser
     - Git명령어 없이 사용가능
+
 - Databasd(DB) 개요
     - 데이터를 저장하는 장소
     - 데이터베이스를 관리하는 프로그램 DBMS
     - 가장 유명한 것이 Oracle, MySQL
     - 사용자는 SQL로 요청, DB서버는 처리결과를 테이블로 리턴
     - SQL을 배우는 것!
+
 - Oracle 설치
     1. Powershell 오픈
     2. docker pull 내려받기
@@ -60,6 +62,7 @@ Java 개발자 과정 Database 리포지토리
             - TCL : COMMIT, ROLLBACK
         - **DML** (Data Manupulation Lang) - 데이터 조작언어(핵심!), 데이터 삽입/조회/수정/삭제
             - `INSERT`, `SELECT`, `UPDATE`, `DELETE`
+
 - SELECT 기본
     - 데이터 조회 시 사용하는 기본명령어
     ```sql
@@ -75,7 +78,7 @@ Java 개발자 과정 Database 리포지토리
      [WITH ROLLUP]
     ```
 
-    - 기본 쿼리 : [SQL](./day01/sql01_select기본.sql)
+    - 기본 쿼리 : [기본쿼리](./day01/sql01_select기본.sql)
         1. 기본 SELECT
         2. WHERE 조건절
         3. NULL(!)
@@ -83,16 +86,17 @@ Java 개발자 과정 Database 리포지토리
         6. 집합
 
 - 함수(내장함수)
-    - 문자함수 : [SQL](./day01/sql02_함수.sql)
+    - 문자함수 : [함수](./day01/sql02_함수.sql)
     - 숫자함수
 
 ## 2일차
-- 함수(계속) : [SQL](./day02/sql01_함수계속.sql)
+- 함수(계속) : [함수2](./day02/sql01_함수계속.sql)
     - 문자함수부터 
     - 숫자함수
     - 날짜함수
     - 형변환함수
-- 복수행함수 : [SQL](./day02/sql02_복수행함수.sql), [SQL](./day03/sql01_복수행함수_마무리.sql)
+
+- 복수행함수 : [복수행1](./day02/sql02_복수행함수.sql), [복수행2](./day03/sql01_복수행함수_마무리.sql)
     - 집계함수
     - GROUP BY
     - HAVING
@@ -116,7 +120,7 @@ Java 개발자 과정 Database 리포지토리
     - BFILE - 외부파일에 저장된 데이터, 4G
 
 ## 3일차
-- JOIN : [SQL](./day03/sql03_조인기본.sql)
+- JOIN : [JOIN](./day03/sql03_조인기본.sql)
     - ERD(Entity Relationship Kiagram) - 개체 관계 다이어그램
         - PK(Primary Key) - 기본키 / 중복이 안되고 빠진 데이터가 하나도 없다 / UNIQUE, NOT NULL
         - FK(Foreign Key) - 외래키 / 다른 언터티(테이블)의 PK. 두 엔터티의 관계를 연결해주는 값
@@ -132,7 +136,7 @@ Java 개발자 과정 Database 리포지토리
         - PK와 FK간 일치하지 않는 데이터도 출력하고자 할때 사용하는 방법
         - LEFT OUTER JOIN, RIGHT OUTER JOIN 또는 오라클 간결문법 사용
 
-- DDL : [SQL](./day03/spl04_DDL.sql)
+- DDL : [DDL](./day03/spl04_DDL.sql)
     - CREATE - TABLE, WIEW, PROCEDURE, FUNCTION / 개체를 생성하는 키워드
         - 타입형형
         ```sql
@@ -164,7 +168,7 @@ Java 개발자 과정 Database 리포지토리
     - 확장 > Database 검색 > Database Client(Weijan Chen) > 확장중 Database 선택
     -   <img src="./image/db0002.png" width="650">
 
-- DML : [INSERT쿼리](./day04/sql01_INSERT.sql), [UPDATE/DELETE쿼리](./day04/sql02_UPDATE_DELETE.sql)
+- DML : [INSERT](./day04/sql01_INSERT.sql), [UPDATE/DELETE쿼리](./day04/sql02_UPDATE_DELETE.sql)
     - INSERT : 테이블에 새로운 데이터를 삽입하는 명령
         - 한 건씩 삽입입
         ```sql
@@ -197,7 +201,8 @@ Java 개발자 과정 Database 리포지토리
             COMMIT;  -- 트랜잭선 확정
             ROLLBACK; --  원상복귀
             ```
-- 제약조건(Constraint) : [제약조건쿼리](./day04/sql04_제약조건.sql)
+
+- 제약조건(Constraint) : [제약조건](./day04/sql04_제약조건.sql)
     - 잘못된 데이터가 들어가지 않도록 막는 기법
         - PRIMARY KEY : 기본키, UIQUE NOT NULL, 중복되지 않고 없어도 안됨
         - FORIEGN KEY : 외래키, 다른 테이블 PK에 없는 값을 가져다 쓸 수 없음
@@ -212,7 +217,8 @@ Java 개발자 과정 Database 리포지토리
 
         ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건
         ```
-- INDEX : [INDEX쿼리](./day04/sql05_인덱스.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
+
+- INDEX : [INDEX](./day04/sql05_인덱스.sql), [인덱스용테이블생성](./ref/bulk_data_insert.sql)
     - 책의 찾아보기와 동일한 기능
     - 검색을 매우 빨리 할 수 있도록 해줌
     - B(alanced) Tree를 사용해서 검색횟수를 log(n)건으로 줄임
@@ -234,6 +240,56 @@ Java 개발자 과정 Database 리포지토리
         CREATE INDEX 인덱스명 ON 테이블명(인덱스걸컬럼명)
         ```
 ## 5일차
-- VIEW
-- 서브쿼리
-- 시퀀스
+- VIEW : [VIEW](./day05/sql01_VIEW.sql)
+    - 기존 테이블에서 권한별로 보일 수 있는 컬럼을 지정해서 만드는 개체 (보안목적적)
+    - 기존 테이블 중 개인정보나 중요한 부분이 있으면 제외하고 보일 수 있음
+    - 뷰라도 INSERTM, UPDATEM, DELETE가 가능함. 단일뷰가 가능
+        ```sql
+        CREATE VIEW 뷰명
+        AS  
+            SELECT 쿼리;
+        [WITH READ ONLY]
+        ```
+    - 복합뷰는 두 개 이상의 테이블을 조인해서 만든 뷰. DML 기능이 (거의) 불가
+
+- 서브쿼리 : [서브쿼리](./day05/sql02_서브쿼리.sql)
+    - 메인쿼리를 도와주는 하위쿼리 뜻함. 소괄괄호() 내에 포함됨
+    - 단일행 서브쿼리, 다중행 서브쿼리마다 사용법 다름
+    - SELECT절(스칼라) 서브쿼리, FROM절 서브쿼리, WHERE절 서브쿼리
+    - 서브쿼리는 JOIN으로 거의 다 변경가능 (안되는 경우도 있음)
+
+- 시퀀스 : [시퀀스](./day05/sql03_시퀀스.sql)
+    - 번호로 지정된 PK값을 자동으로 삽입할 수 있도록 도와주는 기능
+    - 없어도 기능에는 차이가 없지만 효율을 위해서 사용
+    - Oracle만 존재. 타 DB보다 자동증가값 사용이 불편
+        ```sql
+        CREATE SEQUENCE 시퀀스명
+        INCREMENT BY 1  -- 증가값
+        START WITH 1  -- 초기 시작값
+        [MAXVALUE 999999]  -- 최대 증가값
+        [CYCLE]  -- 최대 증가값에 도달하면 다시 처음1로 돌아갈것인지
+        [CACHE]  -- 번호증가 캐쉬(대용량 삽입시만 관계)
+        
+        시퀀스명.NEXTVAL
+        시퀀스명.CURRVAL
+        ```
+
+- 사용자 계정 권한 : [권한](./day05/sql04_사용자계정관리.sql)
+    - 사용자 생성 후 권한(롤)을 부여해야 스키마를 사용가능
+
+    ```sql
+    -- 권한부여
+    GRANT 권한|롤 TO 사용자 [WITH ADMIN|GRANT OPTION]; 
+    -- 권한삭제
+    REVOKE 권한|롤 FROM 사용자;
+    ```
+
+## 6일차
+- PL/SQL : 
+    - Oracle에서 파이썬처럼 코딩
+
+- 
+
+- 
+
+- 
