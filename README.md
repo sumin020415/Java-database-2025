@@ -46,7 +46,7 @@ Java 개발자 과정 Database 리포지토리
     7. DBeaver 접속
         - Connection > Select your DB > Oracle 선택
 
-        <img src="./image/DB_001.png" width="650">
+        <img src="./image/db001.png" width="650">
 
 - DBeaver Community 설치
      - https://dbeaver.io/download/
@@ -166,7 +166,7 @@ Java 개발자 과정 Database 리포지토리
 ## 4일차
 - VS XCdode DB플러그인
     - 확장 > Database 검색 > Database Client(Weijan Chen) > 확장중 Database 선택
-    -   <img src="./image/db0002.png" width="650">
+    -   <img src="./image/db002.png" width="650">
 
 - DML : [INSERT](./day04/sql01_INSERT.sql), [UPDATE/DELETE쿼리](./day04/sql02_UPDATE_DELETE.sql)
     - INSERT : 테이블에 새로운 데이터를 삽입하는 명령
@@ -320,7 +320,7 @@ Java 개발자 과정 Database 리포지토리
         - 실행 시 EXEC를 사용해야함 -- 데이터베이스에서만
         ```sql
         CALL 프로시저명 (파라미터);
-        EXEC 프로시저명 (파라미터);  -- 
+        EXEC 프로시저명 (파라미터);  -- DBeaver에서 사용불가
         ```
     - 함수
         - 스칼라 값을 리턴할 때 - SELECT절 서브쿼리와 기능이 동일
@@ -340,10 +340,27 @@ Java 개발자 과정 Database 리포지토리
         - 실행 시 SELECT문과 DML문과 같이 사용
         ```sql
         SELECT *, 함수명(파라미터)
-          FROM 컬럼명
+          FROM 컬럼명;
         ```
-- 
 
-- 
+    - 커서
+        - DB에서 테이블에 들어있는 데이터를 한줄씩 읽기 위해서 필요
+        ```sql
+        CURSOR 커서명 IS
+        SELECT 쿼리; 
+        ```
 
-- 
+    - 트리거
+        - 특정 동작으로 다른 테이블에 자동으로 데이터가 변경되는 기능
+        - 한가지 동작에 대해서 연쇄적으로 다른일 발생
+        ```sql
+        CREATE OR REPLACE TRIGGER 트리거명
+        BEFORE|AFTER INSERT|UPDATE|DELETE ON 테이블{뷰}이름
+        BEGIN
+            PL/SQL쿼리
+        END;
+        ```
+
+## 7일차
+- Oracle 연동 Python GUI 프로그램 개발
+    - [토이프로젝트](./ToyProject/README.md)
