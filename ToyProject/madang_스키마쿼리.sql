@@ -23,4 +23,7 @@ CREATE SEQUENCE SEQ_STUDENT
 COMMIT;
 
 -- 사용자 madang으로 변경
+
+INSERT INTO MADANG, STUDENTS(std_id, std_mobile, STD_REGYEAR)
+                 VALUES (SEQ_STUDENT.NEXTVAL, :v_std_id, :v_std_mobile, :v_STD_REGYEAR);
 	
