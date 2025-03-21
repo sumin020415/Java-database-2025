@@ -101,8 +101,28 @@ Python GUI - Oracle 연동 프로그램
         - 압축해제(C:\DEV\Tool\instantclient_11_2), 시스템정보 Path 등록
         - 재부팅!
     - 콘솔 테스트 결과
-    <img src = "../image/db008.png" width=600> 
+        <img src = "../image/db008.png" width=600> 
     
 - QtDesigner로 화면 구성
-    - 
+    <img src = "../image/db009.png" width=600> 
+
 - PyQt로 Oracle 연동 CRUD 구현
+    - 조회 SELECT 구현
+    - 삽입 INSERT 구현
+    - 수정, 삭제 구현
+    - 입력값 검증 (Validation check) 로직
+    - DML이 종료된 후 다시 데이터 로드 로직 추가
+    - 데이터 삽입 후 라인에디트에 기존 입력값이 남아있는 것 제거
+
+    <img src = "../image/db011.png" width=600> 
+
+- 개발도중 문제
+    [x] DB 수정모드에서 추가를 눌러도 새로 데이터가 삽입됨
+    [x] 수정모드에서 추가를 한 뒤 학생번호가 라인에디트 그대로 존재
+
+- 개발완료 화면
+    - 아이콘 변경 및 추가
+    <img src = "../image/db012.png" width=600> 
+
+### 데이터베이스 모델링
+- 서점 데이터 모델링
