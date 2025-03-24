@@ -79,10 +79,10 @@ ALTER TABLE "ManagerInfo" ADD CONSTRAINT "PK_MANAGERINFO" PRIMARY KEY (
 	"mng_id"
 );
 
-ALTER TABLE "BookInfo" ADD CONSTRAINT "FK_PublishCompInfo_TO_BookInfo_1" FOREIGN KEY (
+ALTER TABLE "BookInfo" ADD CONSTRAINT "FK_PubComInfo_BookInfo_1" FOREIGN KEY (
 	"pub_id"
 )
-REFERENCES "PublishCompInfo" (
+REFERENCES "PubComInfo" (
 	"pub_id"
 );
 
@@ -100,10 +100,11 @@ REFERENCES "CustomerInfo" (
 	"cst_id"
 );
 
-ALTER TABLE "ManagerInfo" ADD CONSTRAINT "FK_PublishCompInfo_TO_ManagerInfo_1" FOREIGN KEY (
+ALTER TABLE "ManagerInfo" ADD CONSTRAINT "FK_PubComInfo_TO_MngInfo_1" FOREIGN KEY (
 	"pub_id"
 )
 REFERENCES "PublishCompInfo" (
 	"pub_id"
 );
 
+COMMIT;
